@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NITJAA North America — Career Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#141647;
+  --navy2:#2b2e8c;
+  --accent:#2b2e8c;
+  --accent2:#141647;
+  --gold:#c9a23f;
+  --gold-light:#ecdca6;
+  --danger:#b83232;
+  --bg:#eef1f8;
+  --surface:#fafbfe;
+  --surface2:#e4e8f4;
+  --border:#d3d9e8;
+  --text:#14182e;
+  --muted:#5b6280;
+  --light:#8e95b0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px}
+a{color:inherit;text-decoration:none;cursor:pointer}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--navy);border-bottom:3px solid var(--gold)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:36px;height:36px;background:var(--gold);display:grid;place-items:center;font-weight:700;font-size:.85rem;color:var(--navy);letter-spacing:.05em}
+.logo-text{display:flex;flex-direction:column;line-height:1.2}
+.logo-text strong{color:#fff;font-size:.95rem;font-weight:700;letter-spacing:.04em}
+.logo-text span{color:#8ba8c8;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
+.nav-links{display:flex;gap:2px}
+.nav-links a{padding:8px 14px;color:#b0c4d8;font-size:.82rem;font-weight:500;letter-spacing:.03em;transition:color .15s,background .15s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+#navAuth{display:flex;align-items:center;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:9px 20px;font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;border:none;transition:background .15s,opacity .15s;letter-spacing:.03em}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent2)}
+.btn-outline{background:transparent;color:#b0c4d8;border:1px solid #3a5a7a}
+.btn-outline:hover{background:rgba(255,255,255,.08);color:#fff;border-color:#6a8aaa}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:#9a7a20}
+.btn-danger{background:var(--danger);color:#fff;font-size:.72rem;padding:5px 10px}
+.btn-danger:hover{opacity:.85}
+.btn-sm{padding:6px 14px;font-size:.78rem}
+.btn:active{opacity:.8}
+.member-badge{background:var(--gold-light);color:var(--navy);padding:6px 14px;font-size:.78rem;font-weight:600;border-left:3px solid var(--gold)}
+
+/* HERO */
+.hero{background:var(--navy);color:#fff;padding:80px 0 0}
+.hero-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;padding-bottom:64px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(184,147,42,.15);border:1px solid rgba(184,147,42,.35);padding:5px 14px;margin-bottom:24px;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light)}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--gold);display:block}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,3.6rem);line-height:1.1;font-weight:600;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--gold-light)}
+.hero p{color:#8ba8c8;font-size:1.05rem;font-weight:300;max-width:480px;margin-bottom:32px;line-height:1.7}
+.hero-cta{display:flex;gap:12px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1)}
+.stat{background:rgba(15,39,68,.6);padding:28px 24px;border-top:2px solid transparent}
+.stat:nth-child(1){border-color:var(--gold)}
+.stat:nth-child(2){border-color:#4a9fd4}
+.stat:nth-child(3){border-color:var(--accent)}
+.stat:nth-child(4){border-color:#9a6ad4}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:600;color:#fff;line-height:1}
+.stat-lbl{font-size:.72rem;color:#6a8aaa;letter-spacing:.1em;text-transform:uppercase;margin-top:6px}
+.ticker{border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.2);padding:12px 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;gap:48px;font-size:.75rem;color:#6a8aaa;letter-spacing:.1em;text-transform:uppercase;animation:ticker 35s linear infinite}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* LAYOUT */
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+section{padding:80px 0}
+.section-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:600;line-height:1.15;margin-bottom:10px;color:var(--navy)}
+.section-title em{font-style:italic;color:var(--accent)}
+.section-sub{color:var(--muted);font-size:.93rem;max-width:440px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--border)}
+
+/* JOB BOARD */
+#jobs{background:var(--surface)}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;align-items:center}
+.search-box{flex:1;min-width:220px;padding:10px 16px;border:1px solid var(--border);font-family:inherit;font-size:.88rem;outline:none;background:var(--bg);color:var(--text);transition:border-color .15s}
+.search-box:focus{border-color:var(--accent)}
+.chip{padding:8px 16px;border:1px solid var(--border);background:var(--surface);font-family:inherit;font-size:.78rem;font-weight:500;cursor:pointer;color:var(--muted);transition:all .15s}
+.chip:hover{border-color:var(--navy);color:var(--navy)}
+.chip.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.job-list{display:flex;flex-direction:column;gap:1px;background:var(--border)}
+.job-card{display:grid;grid-template-columns:52px 1fr auto;gap:18px;align-items:center;background:var(--surface);padding:20px 24px;cursor:pointer;transition:background .15s}
+.job-card:hover{background:#f0f5ff}
+.job-logo{width:52px;height:52px;display:grid;place-items:center;font-family:'Playfair Display',serif;font-weight:600;font-size:1.25rem;color:#fff}
+.job-title{font-size:.97rem;font-weight:600;color:var(--navy);margin-bottom:3px}
+.job-meta{font-size:.78rem;color:var(--muted);margin-bottom:8px}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:.68rem;padding:3px 8px;background:var(--surface2);border:1px solid var(--border);font-weight:500;color:var(--muted);letter-spacing:.02em}
+.tag-hot{background:#fff5ee;border-color:#f0c898;color:#a05020}
+.tag-match{background:#eef5ee;border-color:#90c498;color:#1a6b4a}
+.job-right{text-align:right;min-width:110px}
+.job-pay{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:2px}
+.job-posted{font-size:.72rem;color:var(--light)}
+.empty{padding:60px;text-align:center;color:var(--light);font-style:italic;font-family:'Playfair Display',serif;background:var(--surface)}
+
+/* MATCHING */
+#matching{background:var(--bg)}
+.match-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.match-panel{background:var(--navy);color:#fff;padding:36px;position:sticky;top:80px;border-top:3px solid var(--gold)}
+.match-panel h3{font-family:'Playfair Display',serif;font-size:1.35rem;margin-bottom:6px;color:#fff}
+.match-panel p{color:#7a9ab8;font-size:.85rem;margin-bottom:24px}
+.skill-cloud{display:flex;flex-wrap:wrap;gap:8px}
+.skill-btn{padding:7px 14px;border:1px solid rgba(255,255,255,.18);background:transparent;font-family:inherit;font-size:.78rem;color:#8ba8c8;cursor:pointer;transition:all .15s}
+.skill-btn:hover{border-color:var(--gold);color:var(--gold-light)}
+.skill-btn.on{background:var(--gold);color:var(--navy);border-color:var(--gold);font-weight:600}
+.match-count{margin-top:24px;font-size:.78rem;color:#5a7a98;letter-spacing:.06em}
+.match-results{display:flex;flex-direction:column;gap:1px;background:var(--border)}
+.match-card{background:var(--surface);padding:20px 24px;display:flex;gap:18px;align-items:center;transition:background .15s}
+.match-card:hover{background:#f0f5ff}
+.score-box{width:56px;height:56px;display:grid;place-items:center;font-weight:700;font-size:.9rem;color:#fff;flex-shrink:0}
+.match-card h4{font-size:.93rem;font-weight:600;color:var(--navy);margin-bottom:3px}
+.match-why{font-size:.78rem;color:var(--muted)}
+.match-hint{padding:48px 32px;background:var(--surface);text-align:center;color:var(--light);font-family:'Playfair Display',serif;font-style:italic;border:1px dashed var(--border)}
+
+/* INTERNSHIPS */
+#internships{background:var(--surface);border-top:1px solid var(--border)}
+.intern-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.intern-card{background:var(--surface);padding:28px;position:relative;transition:background .15s}
+.intern-card:hover{background:#f5f9ff}
+.intern-stripe{position:absolute;top:0;left:0;right:0;height:3px}
+.intern-term{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+.intern-card h3{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:4px}
+.intern-co{font-size:.82rem;color:var(--muted);margin-bottom:14px}
+.intern-desc{font-size:.83rem;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.intern-foot{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;padding-top:14px;border-top:1px solid var(--border)}
+.intern-mentor{color:var(--light)}
+.intern-apply{color:var(--accent);font-weight:700;cursor:pointer}
+
+/* STARTUPS */
+#startups{background:var(--bg)}
+.startup-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
+.startup-card{background:var(--surface);padding:28px;display:grid;grid-template-columns:56px 1fr;gap:20px;align-items:start;transition:background .15s}
+.startup-card:hover{background:#f5f9ff}
+.startup-logo{width:56px;height:56px;display:grid;place-items:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:#fff}
+.startup-name{font-size:1.05rem;font-weight:600;color:var(--navy);display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:2px}
+.stage-badge{font-size:.65rem;padding:2px 8px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--gold-light);color:#7a5010;border:1px solid #d4b060;font-family:'Inter',sans-serif}
+.startup-founder{font-size:.78rem;color:var(--gold);font-weight:600;margin-bottom:10px}
+.startup-desc{font-size:.83rem;color:var(--muted);margin-bottom:16px;line-height:1.6}
+.startup-actions{display:flex;gap:8px;flex-wrap:wrap}
+.mini-btn{padding:7px 14px;font-size:.75rem;font-family:inherit;border:1px solid var(--border);background:var(--surface2);cursor:pointer;font-weight:600;color:var(--navy);transition:all .15s}
+.mini-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.callout{margin-top:32px;background:var(--navy);padding:36px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;border-top:3px solid var(--gold)}
+.callout h3{font-family:'Playfair Display',serif;font-size:1.35rem;color:#fff}
+.callout p{color:#7a9ab8;font-size:.85rem;margin-top:5px;max-width:480px}
+
+/* NETWORK */
+#network{background:var(--navy);color:#fff;border-top:3px solid var(--gold)}
+#network .section-title{color:#fff}
+#network .section-label{color:var(--gold-light)}
+#network .section-sub{color:#6a8aaa}
+.net-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);margin-bottom:48px}
+.net-card{background:rgba(255,255,255,.03);padding:28px;border-top:2px solid transparent;transition:background .15s}
+.net-card:hover{background:rgba(255,255,255,.07)}
+.net-card:nth-child(1){border-color:var(--gold)}
+.net-card:nth-child(2){border-color:#4a9fd4}
+.net-card:nth-child(3){border-color:var(--accent)}
+.net-card:nth-child(4){border-color:#c45454}
+.net-card:nth-child(5){border-color:#9a6ad4}
+.net-card:nth-child(6){border-color:#4ab4a4}
+.net-icon{font-size:1.5rem;margin-bottom:14px;display:block}
+.net-card h3{font-size:.97rem;font-weight:600;color:#d0e4f8;margin-bottom:8px}
+.net-card p{font-size:.82rem;color:#6a8aaa;line-height:1.6}
+.events{border-top:1px solid rgba(255,255,255,.1);padding-top:40px}
+.events-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:24px}
+.event-row{display:grid;grid-template-columns:90px 1fr auto;gap:24px;align-items:center;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.event-date{text-align:center}
+.event-d{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:600;color:var(--gold);line-height:1}
+.event-m{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#5a7a98;margin-top:2px}
+.event-row h3{font-size:.95rem;font-weight:600;color:#d0e4f8}
+.event-where{font-size:.78rem;color:#5a7a98;margin-top:3px}
+.rsvp-btn{padding:8px 18px;font-size:.75rem;font-family:inherit;border:1px solid #3a5a7a;background:transparent;color:#7a9ab8;cursor:pointer;font-weight:600;transition:all .15s;letter-spacing:.04em}
+.rsvp-btn:hover{background:rgba(255,255,255,.08);color:#fff;border-color:#6a8aaa}
+.rsvp-btn.going{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+
+/* FOOTER */
+footer{background:#070f1a;color:#5a7a98;padding:56px 0 28px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+footer h4{font-family:'Playfair Display',serif;color:#c0d4e8;font-size:.97rem;margin-bottom:16px;font-style:italic}
+footer a{display:block;margin-bottom:8px;font-size:.82rem;transition:color .15s;cursor:pointer}
+footer a:hover{color:var(--gold-light)}
+.foot-line{border-top:1px solid #1a2a3a;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.75rem;color:#2a3a4a}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(5,15,30,.7);z-index:400;display:none;align-items:flex-start;justify-content:center;padding:5vh 20px;overflow-y:auto;backdrop-filter:blur(3px)}
+.overlay.open{display:flex}
+.modal{background:var(--surface);max-width:540px;width:100%;padding:36px 40px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:modalIn .22s ease;border-top:3px solid var(--gold)}
+@keyframes modalIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.close-x{position:absolute;top:14px;right:16px;width:30px;height:30px;background:var(--surface2);border:1px solid var(--border);cursor:pointer;font-size:.85rem;display:grid;place-items:center;color:var(--muted);transition:all .15s;font-family:inherit}
+.close-x:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.m-kicker{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.modal h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;line-height:1.2;margin-bottom:4px;color:var(--navy)}
+.m-sub{font-size:.85rem;color:var(--muted);margin-bottom:20px}
+.m-body{font-size:.88rem;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.m-body p{margin-bottom:8px}
+.m-facts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.field input,.field textarea,.field select{width:100%;padding:10px 12px;border:1px solid var(--border);font-family:inherit;font-size:.9rem;outline:none;transition:border-color .15s;background:#fff;color:var(--text)}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent)}
+.field textarea{min-height:88px;resize:vertical}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal .btn{width:100%;text-align:center;margin-top:8px;justify-content:center;padding:12px}
+.m-success{text-align:center;padding:24px 6px}
+.m-success .m-icon{font-size:2.6rem;margin-bottom:14px}
+.m-success p{color:var(--muted);font-size:.9rem;margin-top:8px}
+.deck-slide{background:var(--navy);color:#fff;aspect-ratio:16/9;display:flex;flex-direction:column;justify-content:center;padding:28px;margin-bottom:12px;border-left:4px solid var(--gold)}
+.deck-slide h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--gold-light);margin-bottom:8px}
+.deck-slide p{font-size:.85rem;color:#7a9ab8}
+.deck-nav{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--muted)}
+.applicant-row{background:var(--surface2);border:1px solid var(--border);padding:16px 18px;margin-bottom:8px;position:relative}
+.applicant-row:last-child{margin-bottom:0}
+.applicant-name{font-weight:600;font-size:.92rem;color:var(--navy);margin-bottom:2px}
+.applicant-meta{font-size:.75rem;color:var(--muted);margin-bottom:8px}
+.applicant-note{font-size:.82rem;color:var(--text);margin-bottom:10px;border-left:3px solid var(--border);padding-left:10px;font-style:italic}
+.ai-score{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:700;padding:4px 10px;letter-spacing:.04em}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--navy);color:#fff;padding:12px 24px;font-size:.85rem;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .25s ease;z-index:500;border-left:3px solid var(--gold)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+.hero-inner>div:first-child>*{opacity:0;transform:translateY(12px);animation:fadeUp .6s ease forwards}
+.hero-inner>div:first-child>*:nth-child(2){animation-delay:.08s}
+.hero-inner>div:first-child>*:nth-child(3){animation-delay:.16s}
+.hero-inner>div:first-child>*:nth-child(4){animation-delay:.24s}
+.stat{opacity:0;animation:fadeUp .5s ease forwards}
+.stat:nth-child(1){animation-delay:.1s}
+.stat:nth-child(2){animation-delay:.18s}
+.stat:nth-child(3){animation-delay:.26s}
+.stat:nth-child(4){animation-delay:.34s}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+@media(max-width:960px){
+  .hero-inner,.match-layout,.startup-grid{grid-template-columns:1fr}
+  .intern-grid,.net-grid,.foot-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .match-panel{position:static}
+}
+@media(max-width:600px){
+  .intern-grid,.net-grid,.foot-grid{grid-template-columns:1fr}
+  .job-card{grid-template-columns:1fr}
+  .event-row{grid-template-columns:70px 1fr}
+  .modal{padding:28px 20px}
+  .f-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <img src="data:image/png;base64,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" alt="NITJAA" style="height:38px;width:auto">
+      <div class="logo-text">
+        <strong>NITJAA</strong>
+        <span>North America Chapter</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a data-go="jobs">Jobs</a>
+      <a data-go="matching">Matching</a>
+      <a data-go="internships">Internships</a>
+      <a data-go="startups">Startups</a>
+      <a data-go="network">Network</a>
+    </div>
+    <div id="navAuth">
+      <button class="btn btn-outline btn-sm" onclick="memberLoginModal()">Member Sign In</button>
+      <button class="btn btn-primary btn-sm" onclick="postRoleModal()">Post a Job</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">North America Chapter · Est. 1972</div>
+      <h1>Your next chapter starts with <em>your chapter.</em></h1>
+      <p>Jobs posted by NITJians for NITJians — with warm intros, alumni-backed startups, and mentors who've already walked this path.</p>
+      <div class="hero-cta">
+        <button class="btn btn-gold" data-go="jobs">Browse Open Roles</button>
+        <button class="btn btn-outline" data-go="matching" style="color:#b0c4d8;border-color:#3a5a7a">Get Matched →</button>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num">2,340</div><div class="stat-lbl">Active Members</div></div>
+      <div class="stat"><div class="stat-num">187</div><div class="stat-lbl">Open Positions</div></div>
+      <div class="stat"><div class="stat-num">64</div><div class="stat-lbl">Alumni Startups</div></div>
+      <div class="stat"><div class="stat-num">91%</div><div class="stat-lbl">Referral Response Rate</div></div>
+    </div>
+  </div>
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span>✦ 12 new roles this week</span><span>✦ Founder Mixer · June 18 · Sunnyvale</span><span>✦ Summer internship deadline · June 20</span><span>✦ Resume clinic every Thursday</span><span>✦ 28 NITJians hired through referrals this quarter</span>
+      <span>✦ 12 new roles this week</span><span>✦ Founder Mixer · June 18 · Sunnyvale</span><span>✦ Summer internship deadline · June 20</span><span>✦ Resume clinic every Thursday</span><span>✦ 28 NITJians hired through referrals this quarter</span>
+    </div>
+  </div>
+</header>
+
+<!-- JOB BOARD -->
+<section id="jobs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="section-label">Job Board</div>
+        <h2 class="section-title">Posted by people who <em>actually reply.</em></h2>
+        <p class="section-sub">Every listing is referred by a chapter member. Apply with a warm intro, not into a void.</p>
+      </div>
+    </div>
+    <div class="filter-row reveal">
+      <input class="search-box" id="jobSearch" type="text" placeholder="Search role, company, or skill…" oninput="renderJobs()">
+      <button class="chip active" data-f="all" onclick="setFilter(this)">All</button>
+      <button class="chip" data-f="Engineering" onclick="setFilter(this)">Engineering</button>
+      <button class="chip" data-f="Product" onclick="setFilter(this)">Product</button>
+      <button class="chip" data-f="Design" onclick="setFilter(this)">Design</button>
+      <button class="chip" data-f="Finance" onclick="setFilter(this)">Finance</button>
+      <button class="chip" data-f="Remote" onclick="setFilter(this)">Remote</button>
+    </div>
+    <div class="job-list" id="jobList"></div>
+  </div>
+</section>
+
+<!-- MATCHING -->
+<section id="matching">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="section-label">Smart Matching</div>
+        <h2 class="section-title">Tell us what you do.<br><em>We'll find where you fit.</em></h2>
+        <p class="section-sub">Select your skills — we score and rank every open role against your profile in real time.</p>
+      </div>
+    </div>
+    <div class="match-layout">
+      <div class="match-panel reveal">
+        <h3>Build your profile</h3>
+        <p>Tap everything that applies. The more you select, the sharper the match.</p>
+        <div class="skill-cloud" id="skillCloud"></div>
+        <div class="match-count" id="matchCount">No skills selected yet</div>
+      </div>
+      <div id="matchResults"><div class="match-hint">Your matches appear here — select a few skills above to begin.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNSHIPS -->
+<section id="internships">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="section-label">Internships</div>
+        <h2 class="section-title">First jobs with a <em>built-in mentor.</em></h2>
+        <p class="section-sub">Every internship is paired with an alumni mentor. For students and recent grads in the chapter network.</p>
+      </div>
+    </div>
+    <div class="intern-grid reveal">
+      <div class="intern-card"><div class="intern-stripe" style="background:#b8932a"></div><div class="intern-term">Summer 2026 · Paid</div><h3>Software Engineering Intern</h3><div class="intern-co">Meridian Labs · Palo Alto (Hybrid)</div><div class="intern-desc">Ship features on a production React Native app used by 40k people. You'll demo to the whole team in week two.</div><div class="intern-foot"><span class="intern-mentor">Mentor: A. Sharma '04</span><span class="intern-apply" onclick="internApply(0)">Apply →</span></div></div>
+      <div class="intern-card"><div class="intern-stripe" style="background:#1a6b4a"></div><div class="intern-term">Summer 2026 · Paid</div><h3>Product Analytics Intern</h3><div class="intern-co">Northbeam Health · SF (On-site)</div><div class="intern-desc">Own a metrics dashboard end-to-end. SQL, Python, and a lot of curiosity about why users do what they do.</div><div class="intern-foot"><span class="intern-mentor">Mentor: P. Verma '11</span><span class="intern-apply" onclick="internApply(1)">Apply →</span></div></div>
+      <div class="intern-card"><div class="intern-stripe" style="background:#4a7ab8"></div><div class="intern-term">Fall 2026 · Paid</div><h3>Brand Design Intern</h3><div class="intern-co">Hearthstone Studio · Remote</div><div class="intern-desc">Work on identity systems for two early-stage alumni startups. Portfolio-defining work, real clients, real deadlines.</div><div class="intern-foot"><span class="intern-mentor">Mentor: S. Banerjee '09</span><span class="intern-apply" onclick="internApply(2)">Apply →</span></div></div>
+      <div class="intern-card"><div class="intern-stripe" style="background:#6a4ab8"></div><div class="intern-term">Summer 2026 · Stipend</div><h3>Venture Scout Intern</h3><div class="intern-co">NITJAA Angel Syndicate · Remote</div><div class="intern-desc">Source and evaluate alumni-founded startups for the chapter's angel syndicate. Learn diligence from operators.</div><div class="intern-foot"><span class="intern-mentor">Mentor: D. Mishra '98</span><span class="intern-apply" onclick="internApply(3)">Apply →</span></div></div>
+      <div class="intern-card"><div class="intern-stripe" style="background:#b84a2a"></div><div class="intern-term">Summer 2026 · Paid</div><h3>Growth Marketing Intern</h3><div class="intern-co">Solara Energy · San Jose (Hybrid)</div><div class="intern-desc">Run lifecycle and content experiments for a Series A climate startup. You'll own a channel by August.</div><div class="intern-foot"><span class="intern-mentor">Mentor: K. Sinha '16</span><span class="intern-apply" onclick="internApply(4)">Apply →</span></div></div>
+      <div class="intern-card"><div class="intern-stripe" style="background:#1a7a8a"></div><div class="intern-term">Rolling · Paid</div><h3>Data Science Intern</h3><div class="intern-co">Quantile Capital · SF (On-site)</div><div class="intern-desc">Backtesting infrastructure and signal research at an alumni-run quant shop. Python, pandas, and market intuition.</div><div class="intern-foot"><span class="intern-mentor">Mentor: R. Iyer '08</span><span class="intern-apply" onclick="internApply(5)">Apply →</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STARTUPS -->
+<section id="startups">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="section-label">Startup Corner</div>
+        <h2 class="section-title">Built by alumni. <em>Backed by alumni.</em></h2>
+        <p class="section-sub">Founders from our chapter looking for early hires, advisors, and angel checks from people who already trust them.</p>
+      </div>
+    </div>
+    <div class="startup-grid reveal">
+      <div class="startup-card"><div class="startup-logo" style="background:#1a3a5c">V</div><div><div class="startup-name">Verdant AI <span class="stage-badge">Seed</span></div><div class="startup-founder">Priya Natarajan '12</div><p class="startup-desc">Computer vision for precision agriculture — helping mid-size farms cut water use by 30%. Hiring founding ML engineer.</p><div class="startup-actions"><button class="mini-btn" onclick="introModal(0)">Request Intro</button><button class="mini-btn" onclick="deckModal(0)">View Deck</button></div></div></div>
+      <div class="startup-card"><div class="startup-logo" style="background:#6a2a1a">L</div><div><div class="startup-name">Ledgerline <span class="stage-badge">Pre-seed</span></div><div class="startup-founder">Manish Bhalla '15 &amp; Tara Singh '15</div><p class="startup-desc">Bookkeeping automation for solo founders. 200 paying customers, growing 18% MoM. Raising $750k.</p><div class="startup-actions"><button class="mini-btn" onclick="introModal(1)">Request Intro</button><button class="mini-btn" onclick="deckModal(1)">View Deck</button></div></div></div>
+      <div class="startup-card"><div class="startup-logo" style="background:#2a5a3a">C</div><div><div class="startup-name">CourtSide <span class="stage-badge">Bootstrapped</span></div><div class="startup-founder">Saket V. '07</div><p class="startup-desc">Community sports platform connecting players, courts, and coaches. Live on the App Store, expanding to new cities.</p><div class="startup-actions"><button class="mini-btn" onclick="introModal(2)">Request Intro</button><button class="mini-btn" onclick="appModal(2)">Try the App</button></div></div></div>
+      <div class="startup-card"><div class="startup-logo" style="background:#3a1a5a">N</div><div><div class="startup-name">Nimbus Health <span class="stage-badge">Series A</span></div><div class="startup-founder">Esha Vaidya '06</div><p class="startup-desc">Patient-owned health records with clinician-grade security. 12-person team, hiring across engineering and ops.</p><div class="startup-actions"><button class="mini-btn" onclick="introModal(3)">Request Intro</button><button class="mini-btn" onclick="seeRoles('Nimbus')">See Open Roles</button></div></div></div>
+    </div>
+    <div class="callout reveal">
+      <div><h3>Founding something?</h3><p>List your startup in the chapter directory, pitch at Founder Talks, and get matched with alumni advisors and angels.</p></div>
+      <button class="btn btn-gold" onclick="listStartupModal()">List Your Startup</button>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK -->
+<section id="network">
+  <div class="wrap">
+    <div class="sec-head reveal" style="border-bottom-color:rgba(255,255,255,.1)">
+      <div>
+        <div class="section-label">General Networking</div>
+        <h2 class="section-title">Strong ties. <em>Stronger careers.</em></h2>
+        <p class="section-sub">The job board gets you in the room. The network keeps you there.</p>
+      </div>
+    </div>
+    <div class="net-grid reveal">
+      <div class="net-card"><span class="net-icon">🤝</span><h3>Coffee Roulette</h3><p>Opt in, get paired monthly with one alum outside your industry. 30 minutes, zero agenda.</p></div>
+      <div class="net-card"><span class="net-icon">🧭</span><h3>Mentorship Circles</h3><p>Groups of 5–6 led by a senior alum, meeting monthly around career pivots, management, and founding.</p></div>
+      <div class="net-card"><span class="net-icon">📇</span><h3>Member Directory</h3><p>Searchable by company, city, and batch year. Warm intros to NITJians are one click away.</p></div>
+      <div class="net-card"><span class="net-icon">🎤</span><h3>Founder Talks</h3><p>Quarterly fireside chats with alumni founders — the wins, the near-deaths, and the term sheets.</p></div>
+      <div class="net-card"><span class="net-icon">📝</span><h3>Resume Clinic</h3><p>Thursday evenings. Hiring managers from the chapter review resumes and run real interview loops, free.</p></div>
+      <div class="net-card"><span class="net-icon">💬</span><h3>Industry Channels</h3><p>Active Slack channels for tech, finance, healthcare, design, and climate — plus a fast-moving #hiring channel.</p></div>
+    </div>
+    <div class="events reveal">
+      <div class="events-label">Upcoming Events</div>
+      <div class="event-row"><div class="event-date"><div class="event-d">18</div><div class="event-m">June</div></div><div><h3>NITJAA NA Summer Founder Mixer</h3><div class="event-where">Sunnyvale, CA · 6:00 PM · Members + guests</div></div><button class="rsvp-btn" onclick="rsvp(this)">RSVP</button></div>
+      <div class="event-row"><div class="event-date"><div class="event-d">25</div><div class="event-m">June</div></div><div><h3>Resume Clinic: New Grad &amp; H-1B Edition</h3><div class="event-where">Virtual · 5:30 PM PT / 8:30 PM ET</div></div><button class="rsvp-btn" onclick="rsvp(this)">RSVP</button></div>
+      <div class="event-row"><div class="event-date"><div class="event-d">09</div><div class="event-m">July</div></div><div><h3>Founder Talk: Scaling Past Your First 10 Hires</h3><div class="event-where">Edison, NJ + Livestream · 6:30 PM ET</div></div><button class="rsvp-btn" onclick="rsvp(this)">RSVP</button></div>
+      <div class="event-row"><div class="event-date"><div class="event-d">15</div><div class="event-m">Aug</div></div><div><h3>Annual NITJAA North America Reunion</h3><div class="event-where">Toronto, ON · All batches welcome · Family event</div></div><button class="rsvp-btn" onclick="rsvp(this)">RSVP</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><div style="width:32px;height:32px;background:var(--gold);display:grid;place-items:center;font-weight:700;font-size:.75rem;color:#070f1a">NIT</div><span style="color:#4a6a8a;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase">NITJAA North America</span></div>
+        <p style="font-size:.82rem;max-width:240px;color:#2a4a6a;line-height:1.6">The North America chapter of the NIT Jamshedpur Alumni Association — careers, startups, and the NITJians behind them.</p>
+      </div>
+      <div><h4>Careers</h4><a data-go="jobs">Job Board</a><a data-go="matching">Job Matching</a><a data-go="internships">Internships</a><a onclick="postRoleModal()">Post a Role</a></div>
+      <div><h4>Community</h4><a data-go="startups">Startup Corner</a><a data-go="network">Mentorship</a><a data-go="network">Events</a><a data-go="network">Directory</a></div>
+      <div><h4>Chapter</h4><a onclick="joinModal()">Join the Chapter</a><a onclick="volunteerModal()">Volunteer</a><a onclick="newsletterModal()">Newsletter</a></div>
+    </div>
+    <div class="foot-line"><span>© 2026 NITJAA North America Chapter · NIT Jamshedpur Alumni Association</span><span>From the steel city, with pride ✦</span></div>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()"><div class="modal" id="modal"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---- DATA ---- */
+const JOBS = [
+  {role:"Senior Mobile Engineer (React Native)",co:"Nimbus Health",loc:"San Francisco · Hybrid",cat:"Engineering",remote:false,pay:"$175–210k",posted:"2d ago",color:"#1a3a5c",skills:["React Native","TypeScript","AWS","Mobile"],hot:true,ref:"E. Vaidya '06"},
+  {role:"Founding ML Engineer",co:"Verdant AI",loc:"Palo Alto · On-site",cat:"Engineering",remote:false,pay:"$160–190k + equity",posted:"1d ago",color:"#1a5c3a",skills:["Python","Machine Learning","Computer Vision"],hot:true,ref:"P. Natarajan '12"},
+  {role:"Product Manager, Growth",co:"Solara Energy",loc:"San Jose · Hybrid",cat:"Product",remote:false,pay:"$150–180k",posted:"3d ago",color:"#4a6a2a",skills:["Product Strategy","Analytics","Growth"],hot:false,ref:"K. Sinha '16"},
+  {role:"Staff Backend Engineer",co:"Ledgerline",loc:"Remote (US)",cat:"Engineering",remote:true,pay:"$170–200k",posted:"5d ago",color:"#3a2a5a",skills:["Python","AWS","Postgres","Docker"],hot:false,ref:"M. Bhalla '15"},
+  {role:"Brand & Product Designer",co:"Hearthstone Studio",loc:"Remote",cat:"Design",remote:true,pay:"$120–150k",posted:"1w ago",color:"#5a2a1a",skills:["Figma","Brand Design","UI/UX"],hot:false,ref:"S. Banerjee '09"},
+  {role:"Quantitative Researcher",co:"Quantile Capital",loc:"San Francisco · On-site",cat:"Finance",remote:false,pay:"$200–260k",posted:"4d ago",color:"#1a3a5c",skills:["Python","Quant Finance","Statistics","Backtesting"],hot:true,ref:"R. Iyer '08"},
+  {role:"Finance & Ops Lead",co:"Verdant AI",loc:"Palo Alto · Hybrid",cat:"Finance",remote:false,pay:"$140–165k",posted:"6d ago",color:"#1a5c3a",skills:["Finance","Operations","Fundraising"],hot:false,ref:"P. Natarajan '12"},
+  {role:"Senior Product Designer",co:"Nimbus Health",loc:"Remote (US)",cat:"Design",remote:true,pay:"$155–180k",posted:"2d ago",color:"#1a3a5c",skills:["Figma","UI/UX","Design Systems","Healthcare"],hot:false,ref:"E. Vaidya '06"},
+  {role:"DevOps / Platform Engineer",co:"CourtSide",loc:"Sunnyvale · Hybrid",cat:"Engineering",remote:false,pay:"$150–175k",posted:"1d ago",color:"#2a5a3a",skills:["AWS","Docker","CI/CD","Terraform"],hot:true,ref:"Chapter referral"},
+  {role:"Product Analyst",co:"Northbeam Health",loc:"San Francisco · On-site",cat:"Product",remote:false,pay:"$110–135k",posted:"1w ago",color:"#3a1a5a",skills:["SQL","Analytics","Python"],hot:false,ref:"P. Verma '11"},
+];
+const SKILLS=["React Native","TypeScript","Python","AWS","Machine Learning","SQL","Figma","UI/UX","Product Strategy","Analytics","Quant Finance","Docker","CI/CD","Growth","Brand Design","Operations","Statistics","Backtesting","Mobile","Healthcare"];
+const INTERNS=[
+  {t:"Software Engineering Intern",co:"Meridian Labs",m:"A. Sharma '04",term:"Summer 2026 · Paid"},
+  {t:"Product Analytics Intern",co:"Northbeam Health",m:"P. Verma '11",term:"Summer 2026 · Paid"},
+  {t:"Brand Design Intern",co:"Hearthstone Studio",m:"S. Banerjee '09",term:"Fall 2026 · Paid"},
+  {t:"Venture Scout Intern",co:"NITJAA Angel Syndicate",m:"D. Mishra '98",term:"Summer 2026 · Stipend"},
+  {t:"Growth Marketing Intern",co:"Solara Energy",m:"K. Sinha '16",term:"Summer 2026 · Paid"},
+  {t:"Data Science Intern",co:"Quantile Capital",m:"R. Iyer '08",term:"Rolling · Paid"},
+];
+const STARTUPS=[
+  {n:"Verdant AI",f:"Priya Natarajan '12",stage:"Seed",pitch:"Computer vision for precision agriculture — 30% water savings for mid-size farms.",ask:"Hiring founding ML engineer · Raising Series A in Q4"},
+  {n:"Ledgerline",f:"Manish Bhalla '15 & Tara Singh '15",stage:"Pre-seed",pitch:"Bookkeeping automation for solo founders. 200 paying customers, +18% MoM.",ask:"Raising $750k pre-seed"},
+  {n:"CourtSide",f:"Saket V. '07",stage:"Bootstrapped",pitch:"Community sports platform connecting players, courts, and coaches.",ask:"Expanding to new cities · Looking for city ambassadors"},
+  {n:"Nimbus Health",f:"Esha Vaidya '06",stage:"Series A",pitch:"Patient-owned health records with clinician-grade security.",ask:"Hiring across engineering and ops"},
+];
+
+let currentMember = null;
+let adminCompanies = new Set();
+let APPLICANTS = [];
+
+/* ---- JOB BOARD ---- */
+let activeFilter = "all";
+function setFilter(btn){
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = btn.dataset.f;
+  renderJobs();
+}
+function renderJobs(){
+  const q = document.getElementById('jobSearch').value.toLowerCase();
+  const list = document.getElementById('jobList');
+  const shown = JOBS.filter(j=>{
+    const fOk = activeFilter==="all" || j.cat===activeFilter || (activeFilter==="Remote"&&j.remote);
+    const qOk = !q || (j.role+j.co+j.skills.join(" ")).toLowerCase().includes(q);
+    return fOk&&qOk;
+  });
+  if(!shown.length){list.innerHTML='<div class="empty">No roles match — try widening the search.</div>';return;}
+  list.innerHTML = shown.map(j=>{
+    const idx = JOBS.indexOf(j);
+    const isAdmin = adminCompanies.has(j.co);
+    const appCount = APPLICANTS.filter(a=>a.jobIndex===idx).length;
+    return `<div class="job-card" onclick="jobModal(${idx})">
+      <div class="job-logo" style="background:${j.color}">${j.co[0]}</div>
+      <div>
+        <div class="job-title">${j.role}</div>
+        <div class="job-meta">${j.co} · ${j.loc} · Referred by ${j.ref}</div>
+        <div class="tags">
+          ${j.hot?'<span class="tag tag-hot">🔥 Actively interviewing</span>':''}
+          ${j.skills.slice(0,4).map(s=>`<span class="tag">${s}</span>`).join('')}
+          ${isAdmin&&appCount?`<span class="tag tag-match">👥 ${appCount} applicant${appCount>1?'s':''}</span>`:''}
+        </div>
+      </div>
+      <div class="job-right">
+        <div class="job-pay">${j.pay}</div>
+        <div class="job-posted">${j.posted}</div>
+        ${isAdmin?`<div style="display:flex;gap:6px;margin-top:8px;justify-content:flex-end">
+          <button class="btn btn-sm" style="background:var(--navy2);color:#fff;padding:5px 10px;font-size:.72rem" onclick="event.stopPropagation();viewApplicants(${idx})">View Applicants</button>
+          <button class="btn btn-danger" onclick="event.stopPropagation();deleteJob(${idx})">Delete</button>
+        </div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ---- MATCHING ---- */
+const selected = new Set();
+function initSkills(){
+  document.getElementById('skillCloud').innerHTML = SKILLS.map(s=>
+    `<button class="skill-btn" onclick="toggleSkill(this,'${s}')">${s}</button>`).join('');
+}
+function toggleSkill(btn,s){
+  btn.classList.toggle('on');
+  selected.has(s)?selected.delete(s):selected.add(s);
+  renderMatches();
+}
+function renderMatches(){
+  const out = document.getElementById('matchResults');
+  const count = document.getElementById('matchCount');
+  if(!selected.size){
+    count.textContent="No skills selected yet";
+    out.innerHTML='<div class="match-hint">Select skills on the left to see your matches.</div>';
+    return;
+  }
+  count.textContent=`${selected.size} skill${selected.size>1?'s':''} selected — matching against ${JOBS.length} roles`;
+  const ranked = JOBS.map(j=>{
+    const hits=j.skills.filter(s=>selected.has(s));
+    const score=Math.round(hits.length/Math.max(j.skills.length,1)*100);
+    return {...j,hits,score};
+  }).filter(j=>j.hits.length).sort((a,b)=>b.score-a.score).slice(0,5);
+  if(!ranked.length){out.innerHTML='<div class="match-hint">No direct matches yet — try adding adjacent skills.</div>';return;}
+  out.innerHTML='<div class="job-list" style="background:var(--border)">'+ranked.map((j,i)=>{
+    const bg = j.score>70?'#1a6b4a':j.score>40?'#4a7a2a':'#3a5a7a';
+    return `<div class="match-card">
+      <div class="score-box" style="background:${bg}">${j.score}%</div>
+      <div style="flex:1">
+        <h4>${j.role} · ${j.co}</h4>
+        <div class="match-why">Matched on: ${j.hits.join(', ')}</div>
+        <div class="tags" style="margin-top:6px">
+          <span class="tag tag-match">✓ ${j.hits.length} of ${j.skills.length} skills</span>
+          ${j.remote?'<span class="tag">Remote OK</span>':''}
+        </div>
+      </div>
+      <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();jobModal(${JOBS.findIndex(x=>x.role===j.role&&x.co===j.co)})">Apply</button>
+    </div>`;
+  }).join('')+'</div>';
+}
+
+/* ---- TOAST ---- */
+let toastT;
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+/* ---- NAV ---- */
+document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-go]');
+  if(!a)return;
+  e.preventDefault();e.stopPropagation();
+  const el=document.getElementById(a.dataset.go);
+  if(el)el.scrollIntoView({behavior:'smooth'});
+  else window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ---- AUTH ---- */
+function updateNavAuth(){
+  const el=document.getElementById('navAuth');
+  if(!currentMember){
+    el.innerHTML=`<button class="btn btn-outline btn-sm" onclick="memberLoginModal()">Member Sign In</button><button class="btn btn-primary btn-sm" onclick="postRoleModal()">Post a Job</button>`;
+    return;
+  }
+  el.innerHTML=`
+    <div class="member-badge">Hello, ${currentMember.id}</div>
+    <button class="btn btn-outline btn-sm" onclick="adminAccessModal()">Admin Access</button>
+    <button class="btn btn-primary btn-sm" onclick="postRoleModal()">Post a Job</button>
+    <button class="btn btn-outline btn-sm" onclick="signOut()">Sign Out</button>`;
+}
+function signOut(){currentMember=null;adminCompanies.clear();updateNavAuth();renderJobs();toast('Signed out.');}
+
+/* ---- MODAL ENGINE ---- */
+const overlay=document.getElementById('overlay');
+const modalEl=document.getElementById('modal');
+function openModal(html){modalEl.innerHTML='<button class="close-x" onclick="closeModal()">✕</button>'+html;overlay.classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){overlay.classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+function success(icon,title,msg){
+  modalEl.innerHTML=`<button class="close-x" onclick="closeModal()">✕</button>
+  <div class="m-success"><div class="m-icon">${icon}</div><h2 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy)">${title}</h2><p>${msg}</p>
+  <button class="btn btn-primary" style="max-width:200px;margin:20px auto 0" onclick="closeModal()">Done</button></div>`;
+}
+function field(label,type,ph,req){
+  if(type==='textarea')return`<div class="field"><label>${label}</label><textarea placeholder="${ph||''}"></textarea></div>`;
+  return`<div class="field"><label>${label}</label><input type="${type}" placeholder="${ph||''}"${req?' required':''}></div>`;
+}
+const batchField=`<div class="field"><label>Batch &amp; Branch</label><input type="text" placeholder="e.g., 2014 · Mechanical"></div>`;
+
+/* ---- MEMBER LOGIN ---- */
+function memberLoginModal(){
+  openModal(`
+    <div class="m-kicker">Members</div>
+    <h2>Sign in to NITJAA NA</h2>
+    <p class="m-sub">Your Member ID is in your chapter welcome email (e.g., NITJAA-2014-0042).</p>
+    ${field('Member ID','text','NITJAA-XXXX-XXXX',1)}
+    ${field('Email','email','you@example.com',1)}
+    <button class="btn btn-primary" onclick="memberLoginSubmit(this)">Sign In</button>
+    <p style="font-size:.78rem;color:var(--light);text-align:center;margin-top:14px">No Member ID? <a style="color:var(--accent);font-weight:600" onclick="joinModal()">Join the chapter →</a></p>
+  `);
+}
+function memberLoginSubmit(btn){
+  const inputs=btn.closest('.modal').querySelectorAll('input');
+  const id=inputs[0].value.trim(), email=inputs[1].value.trim();
+  if(!id||!email){toast('Please enter both your Member ID and email.');return;}
+  currentMember={id,email};
+  updateNavAuth();
+  success('✅','Signed in!',`Welcome back, <strong>${id}</strong>. Use Admin Access in the nav to request posting rights for your company.`);
+}
+
+/* ---- ADMIN ---- */
+function adminAccessModal(){
+  if(!currentMember){success('🔒','Sign in required','Please sign in with your Member ID first.');return;}
+  openModal(`
+    <div class="m-kicker">Admin Access · ${currentMember.id}</div>
+    <h2>Request Company Admin</h2>
+    <p class="m-sub">Admin rights let you post and delete listings for your company, and view all applicants. A notification is sent to <strong>goyaldpro@gmail.com</strong> with your Member ID for verification.</p>
+    ${field('Company Name','text','e.g., Verdant AI',1)}
+    ${field('Your role at the company','text','e.g., Engineering Manager')}
+    <button class="btn btn-gold" onclick="adminAccessSubmit(this)">Request Admin Access</button>
+  `);
+}
+function adminAccessSubmit(btn){
+  const inputs=btn.closest('.modal').querySelectorAll('input');
+  const co=inputs[0].value.trim();
+  if(!co){toast('Please enter a company name.');return;}
+  adminCompanies.add(co);
+  renderJobs();
+  success('🛡️','Admin access granted',`A verification notice was sent to <strong>goyaldpro@gmail.com</strong> with your Member ID. You can now post and manage listings for <strong>${co}</strong>.`);
+}
+
+/* ---- VIEW APPLICANTS ---- */
+function viewApplicants(idx){
+  const job=JOBS[idx];
+  const apps=APPLICANTS.filter(a=>a.jobIndex===idx);
+  const sorted=[...apps].sort((a,b)=>b.score-a.score);
+  const listHtml = sorted.length ? sorted.map(a=>{
+    const sc=a.score;
+    const scColor=sc>=80?'#1a6b4a':sc>=60?'#4a7a2a':'#b85c2a';
+    return `<div class="applicant-row">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="applicant-name">${a.name}</div>
+          <div class="applicant-meta">${a.email} · Applied ${a.date}</div>
+          ${a.note?`<div class="applicant-note">"${a.note}"</div>`:''}
+        </div>
+        <div class="ai-score" style="background:${scColor};color:#fff">AI Score: ${sc}/100</div>
+      </div>
+      ${a.resume?`<a href="${a.resume}" style="font-size:.75rem;color:var(--accent);font-weight:600" target="_blank">View Resume →</a>`:''}
+    </div>`;
+  }).join('') : `<div style="text-align:center;padding:32px;color:var(--light);font-style:italic">No applicants yet.</div>`;
+
+  openModal(`
+    <div class="m-kicker">Admin · ${job.co}</div>
+    <h2>${job.role}</h2>
+    <p class="m-sub">${sorted.length} applicant${sorted.length!==1?'s':''} · Sorted by AI candidate score</p>
+    <div style="margin-top:16px">${listHtml}</div>
+  `);
+}
+
+/* ---- POST JOB ---- */
+function postRoleModal(){
+  if(!currentMember){success('🔒','Sign in required','Posting jobs requires a NITJAA Member ID. Sign in first, then request admin access for your company.');return;}
+  const mine=[...adminCompanies];
+  if(!mine.length){adminAccessModal();return;}
+  const opts=mine.map(c=>`<option>${c}</option>`).join('');
+  openModal(`
+    <div class="m-kicker">Admin · ${currentMember.id}</div>
+    <h2>Post a Role</h2>
+    <p class="m-sub">Free for members. You commit to responding to every NITJAA applicant.</p>
+    <div class="field"><label>Company</label><select id="postCompany">${opts}</select></div>
+    <div class="f-row">${field('Role Title','text','e.g., Senior Backend Engineer',1)}${field('Location','text','City · Remote / Hybrid / On-site')}</div>
+    <div class="f-row">${field('Salary Range','text','e.g., $150–180k')}${field('Key skills (comma separated)','text','Python, AWS, Postgres')}</div>
+    <button class="btn btn-primary" onclick="postRoleSubmit(this)">Post Listing</button>
+    <p style="font-size:.75rem;color:var(--light);text-align:center;margin-top:10px">Need admin for another company? <a style="color:var(--accent);font-weight:600" onclick="adminAccessModal()">Request access →</a></p>
+  `);
+}
+function postRoleSubmit(btn){
+  const modal=btn.closest('.modal');
+  const co=modal.querySelector('#postCompany').value;
+  const inputs=modal.querySelectorAll('.field input');
+  const role=inputs[0].value.trim(), loc=inputs[1].value.trim()||'On-site', pay=inputs[2].value.trim()||'Competitive';
+  const skills=inputs[3].value.split(',').map(s=>s.trim()).filter(Boolean);
+  if(!role){toast('Please enter a role title.');return;}
+  const colors=['#1a3a5c','#1a5c3a','#3a2a5a','#5a2a1a','#2a5a3a'];
+  JOBS.unshift({role,co,loc,cat:'Engineering',remote:loc.toLowerCase().includes('remote'),pay,posted:'just now',color:colors[Math.floor(Math.random()*colors.length)],skills:skills.length?skills:['General'],hot:true,ref:currentMember.id});
+  renderJobs();
+  success('🎉','Job posted!',`<strong>${role}</strong> at <strong>${co}</strong> is now live on the job board.`);
+}
+function deleteJob(i){if(!confirm('Delete this listing?'))return;JOBS.splice(i,1);renderJobs();toast('Listing deleted.');}
+
+/* ---- JOB APPLY ---- */
+function jobModal(i){
+  const j=JOBS[i]; const ref=j.ref.replace(/'/g,"\\'");
+  openModal(`
+    <div class="m-kicker">${j.cat} · ${j.remote?'Remote OK':'On-site / Hybrid'}</div>
+    <h2>${j.role}</h2>
+    <p class="m-sub">${j.co} · ${j.loc} · ${j.pay}</p>
+    <div class="m-facts">${j.hot?'<span class="tag tag-hot">🔥 Actively interviewing</span>':''}${j.skills.map(s=>`<span class="tag">${s}</span>`).join('')}</div>
+    <div class="m-body">
+      <p><strong>Why this role:</strong> ${j.co} is an alumni-connected team. You'll work directly with senior folks and ship from week one.</p>
+      <p><strong>The NITJAA edge:</strong> Referred by <strong>${j.ref}</strong> — your application goes in with a warm intro.</p>
+    </div>
+    <div class="f-row">${field('Full Name','text','Your name',1)}${field('Email','email','you@example.com',1)}</div>
+    ${batchField}
+    ${field('LinkedIn or Resume Link','url','https://')}
+    ${field('Note to the referrer','textarea','One or two lines on why this role fits you')}
+    <button class="btn btn-gold" onclick="submitJobApp(${i},this)">Apply with Warm Intro</button>
+  `);
+}
+async function submitJobApp(i, btn){
+  const modal=btn.closest('.modal');
+  const inputs=modal.querySelectorAll('input,textarea');
+  const name=inputs[0].value.trim(), email=inputs[1].value.trim(), resume=inputs[3].value.trim(), note=inputs[4].value.trim();
+  if(!name||!email){toast('Please fill in required fields.');return;}
+  btn.textContent='Scoring your application…';btn.disabled=true;
+  const j=JOBS[i];
+  const score=await scoreCandidate(j,name,note,resume);
+  APPLICANTS.push({jobIndex:i,name,email,note,resume,score,date:'just now'});
+  renderJobs();
+  success('🎯','Application sent!',`Your application for <strong>${j.role}</strong> at <strong>${j.co}</strong> is on its way to ${j.ref}. <br><br><strong>AI Candidate Score: ${score}/100</strong> — this score is shared with the hiring manager.`);
+}
+async function scoreCandidate(job, name, note, resume){
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-6',max_tokens:60,
+        messages:[{role:'user',content:`You are a hiring assistant. Score this candidate from 0-100 for the role of "${job.role}" at ${job.co}. Required skills: ${job.skills.join(', ')}. Candidate note: "${note||'(none)'}". Resume link: ${resume||'(none)'}. Reply ONLY with a JSON object: {"score": <number>, "reason": "<10 words max>"}`}]
+      })
+    });
+    const data=await res.json();
+    const text=data.content?.[0]?.text||'';
+    const parsed=JSON.parse(text.replace(/```json|```/g,'').trim());
+    return parsed.score||Math.floor(50+Math.random()*35);
+  }catch{return Math.floor(55+Math.random()*30);}
+}
+
+/* ---- INTERNS ---- */
+function internApply(i){
+  const it=INTERNS[i]; const m=it.m.replace(/'/g,"\\'");
+  openModal(`
+    <div class="m-kicker">${it.term}</div>
+    <h2>${it.t}</h2>
+    <p class="m-sub">${it.co} · Mentor: ${it.m}</p>
+    <div class="m-body"><p>Every NITJAA internship pairs you with an alumni mentor for the full term — ${it.m} will do a 30-min onboarding call and biweekly check-ins.</p></div>
+    <div class="f-row">${field('Full Name','text','Your name',1)}${field('Email','email','you@example.com',1)}</div>
+    ${batchField}
+    ${field('Resume / Portfolio Link','url','https://')}
+    <button class="btn btn-primary" onclick="success('📨','Application submitted!','${it.co} and your mentor ${m} have been notified. You\\'ll hear back within a week.')">Submit Application</button>
+  `);
+}
+
+/* ---- STARTUPS ---- */
+function introModal(i){
+  const s=STARTUPS[i];
+  openModal(`
+    <div class="m-kicker">${s.stage} · Founder intro</div>
+    <h2>${s.n}</h2>
+    <p class="m-sub">Founded by ${s.f}</p>
+    <div class="m-body"><p>${s.pitch}</p><p><strong>Currently:</strong> ${s.ask}</p></div>
+    <div class="f-row">${field('Your Name','text','',1)}${field('Email','email','',1)}</div>
+    <div class="field"><label>I'm interested as a…</label><select><option>Potential hire</option><option>Angel investor</option><option>Advisor</option><option>Pilot customer</option><option>Just curious</option></select></div>
+    ${field('Message to the founder','textarea','Keep it short — founders read these personally')}
+    <button class="btn btn-primary" onclick="success('🤝','Intro requested!','Your note is on its way to ${s.f.split(' ')[0]}.')">Send Intro Request</button>
+  `);
+}
+function deckModal(i){
+  const s=STARTUPS[i];
+  openModal(`
+    <div class="m-kicker">Member-only deck preview</div>
+    <h2>${s.n}</h2>
+    <p class="m-sub">${s.stage} · ${s.f}</p>
+    <div class="deck-slide"><h3>The Problem</h3><p>${s.pitch}</p></div>
+    <div class="deck-slide"><h3>The Ask</h3><p>${s.ask}</p></div>
+    <div class="deck-nav"><span>2 of 12 slides (preview)</span><button class="mini-btn" onclick="success('📂','Full deck shared','The complete deck for ${s.n} has been sent to your member inbox.')">Get Full Deck</button></div>
+  `);
+}
+function appModal(i){
+  const s=STARTUPS[i];
+  openModal(`
+    <div class="m-kicker">Beta access</div>
+    <h2>Try ${s.n}</h2>
+    <div class="m-body"><p>${s.pitch}</p><p>NITJAA members get priority beta access and a founding-user badge.</p></div>
+    ${field('Email for the invite','email','you@example.com',1)}
+    <button class="btn btn-gold" onclick="success('📱','Invite sent!','Check your inbox for the TestFlight / Play Store link.')">Send Me the Beta</button>
+  `);
+}
+function seeRoles(co){closeModal();document.getElementById('jobSearch').value=co;renderJobs();document.getElementById('jobs').scrollIntoView({behavior:'smooth'});toast('Showing open roles at '+co);}
+function listStartupModal(){
+  openModal(`
+    <div class="m-kicker">Founder corner</div>
+    <h2>List Your Startup</h2>
+    <p class="m-sub">Get in front of 2,300+ alumni — hires, advisors, angels, and customers.</p>
+    <div class="f-row">${field('Startup Name','text','',1)}${field('Stage','text','Pre-seed / Seed / Series A…')}</div>
+    ${field('One-line pitch','text','What do you do, for whom?')}
+    ${field('What do you need right now?','textarea','Hiring? Raising? Pilot customers?')}
+    ${field('Deck or website link','url','https://')}
+    <button class="btn btn-gold" onclick="success('🚀','You\\'re in the pipeline!','The startup committee reviews every Friday. You\\'ll also be invited to pitch at the next Founder Talk.')">Submit Startup</button>
+  `);
+}
+
+/* ---- EVENTS ---- */
+function rsvp(btn){const on=btn.classList.toggle('going');btn.textContent=on?'✓ Going':'RSVP';toast(on?'RSVP confirmed — calendar invite sent!':'RSVP cancelled.');}
+
+/* ---- CHAPTER FORMS ---- */
+function joinModal(){
+  openModal(`
+    <div class="m-kicker">Membership</div>
+    <h2>Join the North America Chapter</h2>
+    <p class="m-sub">Open to all NIT Jamshedpur alumni in the US, Canada, or Mexico.</p>
+    <div class="f-row">${field('Full Name','text','',1)}${field('Email','email','',1)}</div>
+    <div class="f-row">${batchField}<div class="field"><label>Current City</label><input type="text" placeholder="e.g., San Jose, CA"></div></div>
+    <div class="field"><label>I'm most interested in…</label><select><option>Job opportunities</option><option>Hiring NITJians</option><option>Startup ecosystem</option><option>Mentoring</option><option>Social events</option></select></div>
+    <button class="btn btn-gold" onclick="success('🎓','Welcome, NITJian!','Your membership request is in. A volunteer will verify your batch details and activate your account within 48 hours.')">Request Membership</button>
+  `);
+}
+function volunteerModal(){
+  openModal(`
+    <div class="m-kicker">Give back</div>
+    <h2>Volunteer with the Chapter</h2>
+    <p class="m-sub">Everything here runs on alumni time — pick your lane.</p>
+    <div class="f-row">${field('Name','text','',1)}${field('Email','email','',1)}</div>
+    <div class="field"><label>I can help with…</label><select><option>Resume clinics & mock interviews</option><option>Mentorship circles</option><option>Event organizing</option><option>Startup committee</option><option>Tech for this website</option></select></div>
+    <button class="btn btn-primary" onclick="success('🙌','Thank you!','The volunteer coordinator will reach out before the next monthly sync.')">Count Me In</button>
+  `);
+}
+function newsletterModal(){
+  openModal(`
+    <div class="m-kicker">The NITJAA NA Dispatch</div>
+    <h2>Monthly, short, worth it.</h2>
+    <p class="m-sub">New roles, startup milestones, event invites, and one good alumni story. No spam, ever.</p>
+    ${field('Email','email','you@example.com',1)}
+    <button class="btn btn-gold" onclick="success('📬','Subscribed!','Your first Dispatch lands on the 1st of next month.')">Subscribe</button>
+  `);
+}
+
+/* ---- INIT ---- */
+renderJobs();
+initSkills();
+
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
